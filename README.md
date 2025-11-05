@@ -393,7 +393,7 @@ Contributions welcome! Areas for improvement:
 ### Development Setup
 
 ```bash
-git clone https://github.com/yourusername/todo-logger.git
+git clone https://github.com/junyjeon/todo-logger.git
 cd todo-logger
 # Make changes to agent/todo-logger.md
 # Test with Claude Code
@@ -412,9 +412,9 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ## 📬 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/todo-logger/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/todo-logger/discussions)
-- **Email**: your.email@example.com
+- **Issues**: [GitHub Issues](https://github.com/junyjeon/todo-logger/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/junyjeon/todo-logger/discussions)
+- **Email**: junyjeon@gmail.com
 
 ---
 

@@ -425,7 +425,7 @@ ls -lh ~/.claude/todo-history/by-date/
 ### 개발 설정
 
 ```bash
-git clone https://github.com/yourusername/todo-logger.git
+git clone https://github.com/junyjeon/todo-logger.git
 cd todo-logger
 # agent/todo-logger.md 수정
 # Claude Code로 테스트
@@ -444,9 +444,9 @@ MIT 라이선스 - 자세한 내용은 [LICENSE](LICENSE) 참조
 
 ## 📬 지원
 
-- **이슈**: [GitHub Issues](https://github.com/yourusername/todo-logger/issues)
-- **토론**: [GitHub Discussions](https://github.com/yourusername/todo-logger/discussions)
-- **이메일**: your.email@example.com
+- **이슈**: [GitHub Issues](https://github.com/junyjeon/todo-logger/issues)
+- **토론**: [GitHub Discussions](https://github.com/junyjeon/todo-logger/discussions)
+- **이메일**: junyjeon@gmail.com
 
 ---
 
