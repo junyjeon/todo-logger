@@ -30,6 +30,12 @@ You receive the current TodoList state from TodoRead.
 
 1. Extract Session Info
    - Generate session ID from current timestamp: `YYYYMMDD-HHMMSS`
+   - Generate session filename: `MMDD_{first_task_korean_title}.md`
+     - Extract first task from TodoList
+     - Translate to Korean if needed
+     - Sanitize filename (remove special chars: `:`, `/`, `\`, `*`, `?`, `"`, `<`, `>`, `|`)
+     - Limit to 50 characters (truncate with `...` if needed)
+     - If duplicate exists, append `_{HH-MM-SS}` timestamp
    - Current date (YYYY-MM-DD format)
    - Timestamp: current time (HH:MM:SS)
 
@@ -38,25 +44,27 @@ You receive the current TodoList state from TodoRead.
    - Pure English (no Korean) → Record English + Korean translation
    - Mixed (Korean + English) → Record Korean section as-is (no translation)
 
-   Translation Guidelines:
-   - "review" → "리뷰" (not "검토")
-   - "test" → "테스트"
-   - "integration" → "통합"
-   - Prefer natural Korean expressions over literal translations
+   Translation Guidelines (use exact same terms for consistency):
+   - Common verbs: "fix" → "수정", "implement" → "구현", "add" → "추가", "update" → "업데이트", "refactor" → "리팩토링", "remove" → "제거"
+   - Tech terms: "error/bug" → "에러", "test" → "테스트", "build" → "빌드", "deploy" → "배포", "review" → "리뷰", "integration" → "통합"
+   - Keep as-is: File names, variable names, technical identifiers
+   - Natural Korean: Prefer "~하기" over "~을/를 하다" for actions
+   - Consistency: Use the EXACT same translation for repeated terms within same session
 
 3. File Operations - sessions/
-   - Primary target: `/home/jun/.claude/todo-history/sessions/{session_id}.md`
+   - Primary target: `/home/jun/.claude/todo-history/sessions/{filename}.md`
    - If session file doesn't exist, create with header:
      ```markdown
-     # Session: {session_id}
+     {session_id}
 
-     Started: {timestamp}
-     Last Activity: {timestamp}
+     Start: {YY-MM-DD HH:MM:SS}
+     Last: {YY-MM-DD HH:MM:SS}
+     Session: {first_task_korean_title}
 
      ---
      ```
    - Append new TodoWrite section with timestamp
-   - Update Last Activity timestamp
+   - Update Last timestamp (format: YY-MM-DD HH:MM:SS)
    - Use emoji status: ✅ completed, 🔄 in_progress, 🕐 pending, 🚧 blocked
 
 4. File Operations - by-date/
@@ -72,36 +80,28 @@ You receive the current TodoList state from TodoRead.
    - Skip if exact same task already recorded
    - Status updates are allowed
 
-6. Format - sessions/{session_id}.md
+6. Format - sessions/{filename}.md
    ```markdown
-   ## TodoWrite HH:MM:SS
-
-   ### English (if any)
-   - [emoji] Task description
-
-   ### Korean (한국어)
-   - [emoji] 작업 설명
+   ## HH:MM:SS
+   - [emoji] 작업 설명 (Korean only)
    ```
+
+   Note: Only record Korean text. If original task is English, translate to Korean.
 
 7. Format - by-date/{date}.md
    ```markdown
    # {date}
 
-   ## Session: [{session_id}](../sessions/{session_id}.md) ({time})
-
-   ### English
-   - ✅ Task description
-
-   ### Korean (한국어)
-   - ✅ 작업 설명
+   ## Session: [{session_id}](../sessions/{filename}.md) ({time})
+   - ✅ 작업 설명 (Korean only)
 
    ---
 
-   ## Session: [{another_session_id}](../sessions/{another_session_id}.md) ({time})
-
-   ### Korean (한국어)
+   ## Session: [{another_session_id}](../sessions/{another_filename}.md) ({time})
    - 🔄 다른 작업
    ```
+
+   Note: Only record Korean text. Link to session filename, not session ID.
 
 ### Output
 
@@ -147,21 +147,17 @@ Input (TodoRead):
 ]
 ```
 
-Output file (`sessions/20251028-143045.md`):
+Output file (`sessions/1028_인증 구현.md`):
 ```markdown
-# Session: 20251028-143045
+20251028-143045
 
-Started: 2025-10-28 14:30:45
-Last Activity: 2025-10-28 14:30:45
+Start: 25-10-28 14:30:45
+Last: 25-10-28 14:30:45
+Session: 인증 구현
 
 ---
 
-## TodoWrite 14:30:45
-
-### English
-- 🔄 Implement authentication
-
-### Korean (한국어)
+## 14:30:45
 - 🔄 인증 구현
 - 🕐 테스트 작성
 ```
@@ -170,12 +166,7 @@ Output file (`by-date/2025-10-28.md`):
 ```markdown
 # 2025-10-28
 
-## Session: [20251028-143045](../sessions/20251028-143045.md) (14:30:45)
-
-### English
-- 🔄 Implement authentication
-
-### Korean (한국어)
+## Session: [20251028-143045](../sessions/1028_인증 구현.md) (14:30:45)
 - 🔄 인증 구현
 - 🕐 테스트 작성
 ```
