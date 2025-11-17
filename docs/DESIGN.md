@@ -61,7 +61,7 @@ Last Activity: 2025-10-28 14:30:45
 ```markdown
 # 2025-10-28
 
-## Session: [20251028-143045](../sessions/20251028-143045.md) (14:30:45)
+## [251028-143045](../sessions/20251028-143045.md)  (14:30:45)
 
 ### English
 - 🔄 Implement authentication
@@ -145,7 +145,7 @@ Read, Write, Edit, Bash
 
 **결과 by-date/2025-10-28.md**:
 ```markdown
-## Session: [20251028-143045](../sessions/20251028-143045.md) (14:30:45)
+## [251028-143045](../sessions/20251028-143045.md)  (14:30:45)
 
 ### English
 - 🔄 Implement auth

@@ -86,22 +86,18 @@ You receive the current TodoList state from TodoRead.
    - [emoji] 작업 설명 (Korean only)
    ```
 
-   Note: Only record Korean text. If original task is English, translate to Korean.
-
 7. Format - by-date/{date}.md
    ```markdown
    # {date}
 
-   ## Session: [{session_id}](../sessions/{filename}.md) ({time})
-   - ✅ 작업 설명 (Korean only)
+   ## [{session_id}](../sessions/{filename}.md)  ({time})
+   - ✅ 작업 설명
 
    ---
 
-   ## Session: [{another_session_id}](../sessions/{another_filename}.md) ({time})
+   ## [{another_session_id}](../sessions/{another_filename}.md) ({time})
    - 🔄 다른 작업
    ```
-
-   Note: Only record Korean text. Link to session filename, not session ID.
 
 ### Output
 
@@ -166,7 +162,7 @@ Output file (`by-date/2025-10-28.md`):
 ```markdown
 # 2025-10-28
 
-## Session: [20251028-143045](../sessions/1028_인증 구현.md) (14:30:45)
+## [251028-143045](../sessions/1028_인증 구현.md)  (14:30:45)
 - 🔄 인증 구현
 - 🕐 테스트 작성
 ```

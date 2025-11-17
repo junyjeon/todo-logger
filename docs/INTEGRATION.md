@@ -514,7 +514,7 @@ cp ~/.claude/todo-history/sessions/20251104-013244.md{,.backup}
 ```markdown
 # 2025-11-04
 
-## Session: [20251104-013244](../sessions/20251104-013244.md) (01:32:44)
+## [251104-013244](../sessions/20251104-013244.md)  (01:32:44)
 
 ### English
 - ✅ Task description
