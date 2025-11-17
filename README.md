@@ -151,35 +151,22 @@ Claude: <Creates TodoList with TodoWrite>
 
 ### File Formats
 
-**Session Log** (`sessions/20251104-013244.md`):
+**Session Log** (`sessions/1104_인증 시스템 구현.md`):
 ```markdown
-# Session: 20251104-013244
+20251104-013244
 
-Started: 2025-11-04 01:32:44
-Last Activity: 2025-11-04 01:35:12
+Start: 25-11-04 01:32:44
+Last: 25-11-04 01:35:12
+Session: 인증 시스템 구현
 
 ---
 
-## TodoWrite 01:32:44
-
-### English
-- 🔄 Implement authentication system
-- 🕐 Write unit tests
-- 🕐 Update documentation
-
-### Korean (한국어)
+## 01:32:44
 - 🔄 인증 시스템 구현
 - 🕐 단위 테스트 작성
 - 🕐 문서 업데이트
 
-## TodoWrite 01:35:12
-
-### English
-- ✅ Implement authentication system
-- 🔄 Write unit tests
-- 🕐 Update documentation
-
-### Korean (한국어)
+## 01:35:12
 - ✅ 인증 시스템 구현
 - 🔄 단위 테스트 작성
 - 🕐 문서 업데이트
@@ -189,27 +176,14 @@ Last Activity: 2025-11-04 01:35:12
 ```markdown
 # 2025-11-04
 
-## Session: [20251104-013244](../sessions/20251104-013244.md) (01:32:44)
-
-### English
-- ✅ Implement authentication system
-- 🔄 Write unit tests
-- 🕐 Update documentation
-
-### Korean (한국어)
+## Session: [20251104-013244](../sessions/1104_인증 시스템 구현.md) (01:32:44)
 - ✅ 인증 시스템 구현
 - 🔄 단위 테스트 작성
 - 🕐 문서 업데이트
 
 ---
 
-## Session: [20251104-020156](../sessions/20251104-020156.md) (02:01:56)
-
-### English
-- ✅ Write unit tests
-- 🔄 Update documentation
-
-### Korean (한국어)
+## Session: [20251104-020156](../sessions/1104_단위 테스트 작성.md) (02:01:56)
 - ✅ 단위 테스트 작성
 - 🔄 문서 업데이트
 ```
@@ -221,28 +195,28 @@ Last Activity: 2025-11-04 01:35:12
 - 🕐 `pending` - Queued for future work
 - 🚧 `blocked` - Waiting on dependency or external factor
 
-## 🌐 Bilingual Support
+## 🌐 Korean-Only Recording
 
-### Language Detection Rules
+### Language Processing
 
-**1. Pure Korean** → Record Korean section only
+**All tasks are recorded in Korean only** for improved readability and token efficiency.
+
+**1. Pure Korean** → Record as-is
 ```
 Input: "데이터베이스 설계"
-Output: Korean section with original text
+Output: "데이터베이스 설계"
 ```
 
-**2. Pure English** → Record English + auto-translate to Korean
+**2. Pure English** → Auto-translate to Korean
 ```
 Input: "Implement database schema"
-Output:
-- English: "Implement database schema"
-- Korean: "데이터베이스 스키마 구현"
+Output: "데이터베이스 스키마 구현"
 ```
 
-**3. Mixed (Korean + English)** → Record Korean section as-is
+**3. Mixed (Korean + English)** → Record as-is
 ```
 Input: "Implement 데이터베이스 설계"
-Output: Korean section with "Implement 데이터베이스 설계"
+Output: "Implement 데이터베이스 설계"
 ```
 
 ### Translation Guidelines
