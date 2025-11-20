@@ -69,16 +69,20 @@ You receive the current TodoList state from TodoRead.
 
 4. File Operations - by-date/
    - Secondary target: `/home/jun/.claude/todo-history/by-date/{YYYY-MM-DD}.md`
-   - Update on every TodoWrite: overwrite the session section with latest state
-   - Include actual TodoList content from all sessions of that date
+   - Create daily file if doesn't exist with date header
+   - Append session summary with link to session file
    - Link to session files for reference
-   - Clean format: session header with link + TodoList items
+   - Clean format: session header with link + completed tasks only
    - NO unnecessary metadata (no Project, Context, TodoWrites, Tasks stats)
 
-5. Duplicate Detection
-   - Compare task content within current session file
-   - Skip if exact same task already recorded
-   - Status updates are allowed
+5. Delta Recording (Deduplication)
+   - Read today's existing entries from by-date file
+   - Extract all previously recorded task descriptions
+   - Compare current TodoList with previous tasks
+   - Only record tasks with status ✅ completed that weren't previously completed
+   - Task matching: Compare description text (ignore emoji prefix)
+   - Skip tasks already recorded as completed in earlier sessions
+   - Result: Each session shows only newly completed tasks
 
 6. Format - sessions/{filename}.md
    ```markdown
@@ -91,13 +95,17 @@ You receive the current TodoList state from TodoRead.
    # {date}
 
    ## [{session_id}](../sessions/{filename}.md)  ({time})
-   - ✅ 작업 설명
+   - ✅ 첫 번째 완료 작업
+   - ✅ 두 번째 완료 작업
 
    ---
 
    ## [{another_session_id}](../sessions/{another_filename}.md) ({time})
-   - 🔄 다른 작업
+   - ✅ 이번 세션에서 새로 완료된 작업
+   - ✅ 또 다른 새로 완료된 작업
    ```
+
+   Each session shows only newly completed tasks (Delta)
 
 ### Output
 
@@ -163,9 +171,17 @@ Output file (`by-date/2025-10-28.md`):
 # 2025-10-28
 
 ## [251028-143045](../sessions/1028_인증 구현.md)  (14:30:45)
-- 🔄 인증 구현
-- 🕐 테스트 작성
+- ✅ API 설계 완료
+- ✅ 데이터베이스 스키마 작성
+
+---
+
+## [251028-160530](../sessions/1028_테스트_추가.md)  (16:05:30)
+- ✅ 단위 테스트 작성
+- ✅ 통합 테스트 작성
 ```
+
+Note: Only completed tasks (✅) from each session, no duplicates
 
 Display:
 ```
