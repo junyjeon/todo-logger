@@ -94,13 +94,13 @@ You receive the current TodoList state from TodoRead.
    ```markdown
    # {date}
 
-   ## [{session_id}](../sessions/{filename}.md)  ({time})
+   ## [{session_id}](../sessions/{filename}.md)
    - ✅ 첫 번째 완료 작업
    - ✅ 두 번째 완료 작업
 
    ---
 
-   ## [{another_session_id}](../sessions/{another_filename}.md) ({time})
+   ## [{another_session_id}](../sessions/{another_filename}.md)
    - ✅ 이번 세션에서 새로 완료된 작업
    - ✅ 또 다른 새로 완료된 작업
    ```
@@ -170,13 +170,13 @@ Output file (`by-date/2025-10-28.md`):
 ```markdown
 # 2025-10-28
 
-## [251028-143045](../sessions/1028_인증 구현.md)  (14:30:45)
+## [251028-143045](../sessions/1028_인증 구현.md)
 - ✅ API 설계 완료
 - ✅ 데이터베이스 스키마 작성
 
 ---
 
-## [251028-160530](../sessions/1028_테스트_추가.md)  (16:05:30)
+## [251028-160530](../sessions/1028_테스트_추가.md)
 - ✅ 단위 테스트 작성
 - ✅ 통합 테스트 작성
 ```
